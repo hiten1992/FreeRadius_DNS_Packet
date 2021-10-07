@@ -1,0 +1,17 @@
+
+
+/usr/bin/radclient -f radclient_data localhost:1813 acct s3cr3t
+
+echo "Acct-Unique-Session-Id = ac203e4c228ac857b41d86a3b3b7597d" | /usr/bin/radclient localhost:1813 acct s3cr3t
+
+echo "Acct-Session-Id = ac203e4c228ac857b41d86a3b3b7597d" | /usr/bin/radclient localhost:1813 acct s3cr3t
+
+echo "Acct-Input-Octets = 13096445" | /usr/bin/radclient localhost:1813 acct s3cr3t
+
+echo "Acct-Session-Id = ac203e4c228ac857b41d86a3b3b7597d" | /usr/bin/radclient localhost:1813 acct s3cr3t
+
+echo "Event-Timestamp = Mar 23 2021 16:25:50 IST" | /usr/bin/radclient localhost:1813 acct s3cr3t
+
+echo "Calling-Station-Id = 1111" | /usr/bin/radclient localhost:1813 acct s3cr3t
+
+echo "Acct-Status-Type = Stop" | /usr/bin/radclient localhost:1813 acct s3cr3t

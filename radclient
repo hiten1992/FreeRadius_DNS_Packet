@@ -1,0 +1,49 @@
+#!/bin/sh
+
+ 
+
+while true;
+
+do
+
+   uniqid=$(uuid)
+
+   #randon=$$
+
+   r=$(( $RANDOM % 10 + 25 ));
+
+   rr=$(( $RANDOM % 10 + 9 ));
+
+   ip="192.168.$rr.$r"
+
+ 
+
+   sed s/jnprxe030505773587411/$uniqid/ acct_ipv6_start > acct_ipv6_test1
+
+   sed s/IPPPP/$ip/ acct_ipv6_test1 > acct_ipv6_test2
+
+ 
+
+   cat acct_ipv6_test2
+
+   radclient -f acct_ipv6_test2 localhost acct testing123
+
+ 
+
+ 
+
+   sed s/jnprxe030505773587411/$uniqid/ acct_ipv6_stopp > acct_ipv6_stop1
+
+   sed s/IPPPP/$ip/  acct_ipv6_stop1 > acct_ipv6_stop2
+
+ 
+
+   cat acct_ipv6_stop2
+
+ 
+
+   radclient -f acct_ipv6_stop2 localhost acct testing123
+
+done
+
+radius_testing_new.sh (END)

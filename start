@@ -1,0 +1,34 @@
+START query = "\
+				INSERT INTO ${....acct_table1} \
+					(${...column_list}) \
+				VALUES \
+					('%{Acct-Session-Id}', \
+					'%{Acct-Unique-Session-Id}', \
+					'%{SQL-User-Name}', \
+					'%{Realm}', \
+					'%{NAS-IP-Address}', \
+					'%{NAS-Port}', \
+					'%{NAS-Port-Type}', \
+					FROM_UNIXTIME(%{integer:Event-Timestamp}), \
+					FROM_UNIXTIME(%{integer:Event-Timestamp}), \
+					NULL, \
+					'0', \
+					'%{Acct-Authentic}', \
+					'%{Connect-Info}', \
+					'', \
+					'0', \
+					'0', \
+					'%{Called-Station-Id}', \
+					'%{Calling-Station-Id}', \
+					'', \
+					'%{Service-Type}', \
+					'%{Framed-Protocol}', \
+					'%{Framed-IP-Address}')"
+query = "\
+				UPDATE ${....acct_table1} SET \
+					acctstarttime	= FROM_UNIXTIME(%{integer:Event-Timestamp}), \
+					acctupdatetime	= FROM_UNIXTIME(%{integer:Event-Timestamp}), \
+					connectinfo_start = '%{Connect-Info}' \
+				WHERE acctsessionid = '%{Acct-Session-Id}' \
+				AND username		= '%{SQL-User-Name}' \
+				AND nasipaddress	= '%{NAS-IP-Address}'"
